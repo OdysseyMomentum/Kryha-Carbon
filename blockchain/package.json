@@ -1,0 +1,24 @@
+{
+  "name": "blockchain",
+  "version": "1.0.0",
+  "description": "Blockchain Kryha",
+  "scripts": {
+    "migrate": "truffle migrate",
+    "start": "NODE_ENV=development npm run migrate",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv-flow": "^3.2.0",
+    "ganache-cli": "^6.12.1",
+    "truffle": "^5.1.53",
+    "truffle-hdwallet-provider": "^1.0.17"
+  },
+  "standard": {
+    "ignore": [
+      "./build"
+    ]
+  }
+}

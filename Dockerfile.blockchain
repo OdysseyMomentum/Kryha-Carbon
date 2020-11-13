@@ -1,0 +1,15 @@
+FROM node:12-alpine as build
+
+WORKDIR /usr/src/blockchain
+
+COPY blockchain/package*.json ./
+
+RUN npm install 
+
+COPY /blockchain ./
+
+EXPOSE 5000
+
+ENV NODE_ENV=production
+
+CMD ["npm", "run", "start"]

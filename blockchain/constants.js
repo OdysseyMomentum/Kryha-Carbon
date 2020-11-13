@@ -1,0 +1,15 @@
+require("dotenv-flow").config();
+
+const {
+  HD_WALLET_MNEMONIC,
+  HD_WALLET_DEFAULT_ACCOUNT,
+  ETHEREUM_RPC_URL,
+  DEVELOPMENT_TRUFFLE_HOST,
+} = process.env;
+
+module.exports = {
+  HD_WALLET_MNEMONIC,
+  HD_WALLET_DEFAULT_ACCOUNT,
+  ETHEREUM_RPC_URL,
+  DEVELOPMENT_TRUFFLE_HOST,
+};

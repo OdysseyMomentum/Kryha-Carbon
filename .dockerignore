@@ -1,0 +1,11 @@
+# version control
+**/.git
+# dependencies
+**/node_modules
+# output
+**/build
+# test coverage
+**/coverage
+# mongo
+**/.mongo
+README.md
