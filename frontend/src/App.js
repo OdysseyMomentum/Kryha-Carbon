@@ -1,11 +1,11 @@
 import Router from "./router/main-router";
+import { StateProvider } from './context';
 
 function App() {
   return (
-    <div>
-      Yo Kryha Hackathon team
+    <StateProvider>
       <Router />
-    </div>
+    </StateProvider>
   );
 }
 
