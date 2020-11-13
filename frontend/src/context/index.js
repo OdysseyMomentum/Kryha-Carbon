@@ -1,12 +1,22 @@
-import React, { createContext, useReducer, useContext } from "react";
+import React, { createContext, useReducer, useContext, useEffect } from "react";
+import { getUserAccounts } from '../actions/user';
 
-const initialState = Object.freeze({});
+const initialState = Object.freeze({
+  user: undefined,
+  availableUsers: undefined,
+});
 
 const Context = createContext(undefined);
 const DispatchContext = createContext(undefined);
 
 const Reducer = (state, action) => {
   switch (action.type) {
+    case "SET_USER":
+      return { ...state, user: action.payload };
+    case "SET_AVAILABLE_USERS":
+      return { ...state, availableUsers: action.payload };
+    case "LOGOUT":
+      return { ...state, user: undefined };
     default:
       return { ...state };
   }
@@ -14,6 +24,10 @@ const Reducer = (state, action) => {
 
 export const StateProvider = (props) => {
   const [state, dispatch] = useReducer(Reducer, initialState);
+
+  useEffect(() => {
+    getUserAccounts(dispatch);
+  }, []);
 
   return (
     <Context.Provider value={state}>
