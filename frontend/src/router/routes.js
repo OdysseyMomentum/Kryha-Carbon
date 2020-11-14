@@ -1,5 +1,8 @@
 export const ROUTES = {
-  HOME: "/",
+  LANDING: "/",
+  REPORT: "/report",
+  PRODUCT: "/product",
+  VERIFY: "/verify"
 };
 
 export default ROUTES;
