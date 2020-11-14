@@ -29,37 +29,71 @@ export const Login = () => {
     };
 
 	return (
-        <Container>
-            <form onSubmit={submit}>
-                <select
-                    id="email"
-                    name="email"
-                    value={email}
-                    onChange={(event) => setEmail(event.target.value)}
-                >
-                    {availableUsers.length
-                        ? (
-                            <>
-                                <option value="" disabled key="empty"></option>
-                                {availableUsers.map((availableUser) => (
-                                    <option value={availableUser.email} key={availableUser.email}>
-                                        {`${availableUser.name} - ${availableUser.accountType}`}
-                                    </option>
-                                ))}
-                            </>
-                        )
-                        : (
-                        <option value="" disabled key="empty users">Currently no users available</option>
-                    )}
-                </select>
-                <button type="submit">login</button>
-            </form>
-        </Container>
+        <>
+            <Header>
+                <img
+                    src="https://s3-alpha-sig.figma.com/img/ce11/7bc6/1f170f971747fb6b0964bbe71afcd00c?Expires=1606089600&Signature=SUbrnKPzKqGPR2nKDFGchM6hpeitZFkec1eQzadkDhrJOndlehiHTZ1OWRcddqJDzWtJnUgXcgU0kaC~1BmtgqeTLRAgOrLsacGHCxOEYfdSdP36BCyiAXhbXao~c2lwqRbVaUrlfFPlffPjgz5S2UMScyEwMfUWb0EamoVF4Cjt2HHIaWqvwkPDjGIyPe6183CyEVWlUE7dLr430NHzDb12te6fEH7Wu7lvWSIb3A0y2DtXp8KsqKlZ4qjBoli0nMOYXqpdF~AtpUSdvzHOUp46oGXkFVVJWXxOwsBBN56deh7QhqnBUu8Ix9obcWidqtCDDNMEmzGtn50sMsji~g__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+                />
+                <h1>Charles</h1>
+                <h2>Only the fittest supply</h2>
+            </Header>
+            <FormContainer>
+                <h6>Not part of the network? Join now</h6>
+                <hr />
+                <h3>Login</h3>
+                <Form onSubmit={submit}>
+                    <select
+                        id="email"
+                        name="email"
+                        value={email}
+                        onChange={(event) => setEmail(event.target.value)}
+                    >
+                        {availableUsers.length
+                            ? (
+                                <>
+                                    <option value="" disabled key="empty"></option>
+                                    {availableUsers.map((availableUser) => (
+                                        <option value={availableUser.email} key={availableUser.email}>
+                                            {`${availableUser.name} - ${availableUser.accountType}`}
+                                        </option>
+                                    ))}
+                                </>
+                            )
+                            : (
+                            <option value="" disabled key="empty users">Currently no users available</option>
+                        )}
+                    </select>
+                    <button type="submit">login</button>
+                </Form>
+            </FormContainer>
+        </>
     );
 };
 
-const Container = styled.div`
+const Header = styled.div`
+    position: relative;
+	width: calc(536px + ((100% - 536px) / 2));
+    height: 320px;
+    overflow: hidden;
+
+    img {
+        z-index: 1;
+        position: absolute;
+        opacity: 0.85;
+    }
+
+    h1, h2 {
+        z-index: 2;
+        position: relative;
+    }
+`;
+
+const FormContainer = styled.div`
 	width: 100%;
 	margin: 0 auto;
-	max-width: 1000px;
+    max-width: 536px;
+`;
+
+const Form = styled.form`
+    width: 100%;
 `;
