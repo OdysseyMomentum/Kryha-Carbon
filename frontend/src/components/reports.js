@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
+import { useStore } from '../context';
 
 import { ListItem, ListItemContainer } from "./shared/list-item";
 import { color } from '../assets/color';
@@ -15,6 +16,9 @@ const years = [
 
 export const Reports = () => {
     const history = useHistory();
+    const { user } = useStore();
+
+	if (user.accountType === "downstream") return <Redirect to={ROUTES.PRODUCTS} />;
 
 	return (
         <Container>
@@ -39,7 +43,9 @@ export const Reports = () => {
 };
 
 const Container = styled.div`
-    max-width: 700px;
+    padding: 0 100px;
+    width: 100%;
+    margin: 0 auto;
 
     h2 {
         font-weight: 700;
