@@ -30,9 +30,27 @@ services:
     image: mongo:4
     ports:
       - target: 27017
-        published: 27017
+        published: 27018
     volumes:
       - .mongo/db/:/data/db/
     restart: on-failure
     logging:
       driver: none
+
+  blockchain:
+    build:
+      context: .
+      dockerfile: Dockerfile.blockchain
+    depends_on:
+      - ganache
+    environment:
+      - HOST=${NETWORK_HOST}
+    volumes:
+      - ./blockchain/build/:/usr/src/blockchain/build/
+
+  ganache:
+    build:
+      context: .
+      dockerfile: Dockerfile.ganache
+    ports:
+      - "8545:8545"
