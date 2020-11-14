@@ -5,5 +5,8 @@ export const reportValidator = [
   body("report.emissions")
     .notEmpty()
     .withMessage("The report should contain emissions"),
-  body("report.year").notEmpty().withMessage("The report should contain a year")
+  body("report.year")
+    .notEmpty()
+    .withMessage("The report should contain a year"),
+  body("report.stars").notEmpty().withMessage("The report should contain stars")
 ];

@@ -9,7 +9,8 @@ export const createReportHandler = async (
   const report: ReportType = {
     email: req.body.email,
     emissions: req.body.report.emissions,
-    year: req.body.report.year
+    year: req.body.report.year,
+    stars: req.body.report.stars
   };
 
   const response = await createReport(report);
