@@ -17,6 +17,13 @@ const _findOne = async (
   });
 };
 
+export const findOneReportByEmail = async (email: string) => {
+  return _findOne({ email }).catch((e) => {
+    console.log(e);
+    throw e;
+  });
+};
+
 export const findOneByHash = async (
   hash: string,
   email: string
