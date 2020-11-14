@@ -59,15 +59,28 @@ export const SelectInput = (props) => {
 const InputField = styled.input`
   width: ${(props) => props.width || "100%"};
   border: none;
-  border-radius: 30px;
-  color: ;
-  background: ;
-  padding: 20px;
-  font-family: "Exo 2", normal;
-  font-size: ${fontSize[2]};
-  height: 60px;
+  border-radius: 3px;
+  color: ${color.dark};
+  background: ${color.veryLightPurple};
+  padding: 18px 31px;
+  font-size: 18px;
+  height: 52px;
   :focus {
-    border-color: ${color.grey};
+    border-color: ${color.neon};
+  }
+`;
+const InputFieldTransparent = styled.input`
+  width: ${(props) => props.width || "100%"};
+  border: 1px solid;
+  border-color: ${color.neon};
+  border-radius: 3px;
+  color: ${color.neon};
+  background: transparent;
+  padding: 18px 31px;
+  font-size: 18px;
+  height: 52px;
+  :focus {
+    border-color: ${color.neon};
   }
 `;
 
@@ -86,6 +99,27 @@ const InputField = styled.input`
 //   placeholder?: string;
 // };
 export const Input = (props) => {
+  if (props.transparent) {
+    return (
+      <div style={{ width: props.width }}>
+      <label>{props.label}</label>
+      <InputFieldTransparent
+        value={props.value}
+        onChange={props.onChange}
+        name={props.name || props.value}
+        type={props.password ? "password" : "text"}
+        onFocus={props.onFocus}
+        onBlur={props.onBlur}
+        readOnly={!props.onChange}
+        disabled={props.disabled}
+        width={props.width}
+        placeholder={props.placeholder}
+      />
+      {props.error && <Message error>{/*<ErrorIcon />*/ props.error}</Message>}
+      {props.success && <Message>{/*<SuccessIcon />*/ props.success}</Message>}
+    </div>
+    )
+  }
   return (
     <div style={{ width: props.width }}>
       <label>{props.label}</label>

@@ -27,7 +27,7 @@ export const Login = () => {
             const loggedInUser = availableUsers.find(availableUser => availableUser.email === email);
             return toast.success(`Welcome ${loggedInUser.name}`);
         } else {
-            toast.error("Login error, please try again later");
+            return toast.error("Login error, please try again later");
         }
     };
 

@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useHistory, Redirect } from "react-router-dom";
-import { useStore } from '../context';
+import { useStore, useStoreContext } from '../context';
 
 import { ListItem, ListItemContainer } from "./shared/list-item";
 import { color } from '../assets/color';
 import { ReactComponent as Plus } from '../assets/icons/plus.svg';
 import ROUTES from '../router/routes';
+import { getReports } from "../actions/report";
 
 const years = [
     new Date().getFullYear(),
@@ -16,7 +17,15 @@ const years = [
 
 export const Reports = () => {
     const history = useHistory();
-    const { user } = useStore();
+    const [{ user, reports }, dispatch]= useStoreContext();
+
+    useEffect(() => {
+        async function GetReports() {
+            getReports(dispatch)
+        }
+        GetReports()
+        console.log(reports)
+    }, [dispatch])
 
 	if (user.accountType === "downstream") return <Redirect to={ROUTES.PRODUCTS} />;
 
@@ -52,6 +61,7 @@ const Container = styled.div`
         font-size: 40px;
         color: ${color.green};
         margin-bottom: 60px;
+        margin-top: 100px;
     }
 `;
 
