@@ -1,5 +1,9 @@
 import { Request, Response } from "express";
-import { registerProduct, updateProduct } from "../../core/product";
+import {
+  notifyUpstream,
+  registerProduct,
+  updateProduct
+} from "../../core/product";
 
 export const registerProductHandler = async (
   req: Request,
