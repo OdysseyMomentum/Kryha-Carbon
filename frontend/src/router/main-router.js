@@ -1,18 +1,18 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import { Home } from '../components/home';
 import { Login } from '../components/login';
 import { Layout } from '../components/layout';
 import { ROUTES } from "./routes";
 import ReportForm from "../components/report-form"
+import { Verify } from '../components/verify';
 
 export const Router = () => (
   <BrowserRouter>
     <Switch>
-      <Route exact path={ROUTES.HOME}>
+      <Route exact path={ROUTES.LOGIN}>
         <Layout>
-          <Home />
+        <Login />
         </Layout>
       </Route>
       <Route exact path={ROUTES.REPORT_FORM}>
@@ -20,8 +20,10 @@ export const Router = () => (
           <ReportForm />
         </Layout>
       </Route>
-      <Route exact path={ROUTES.LOGIN}>
-        <Login />
+      <Route exact path={ROUTES.VERIFY}>
+        <Layout>
+          <Verify />
+        </Layout>
       </Route>
     </Switch>
   </BrowserRouter>
