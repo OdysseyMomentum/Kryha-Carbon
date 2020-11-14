@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 import { Login } from '../components/login';
 import { Layout } from '../components/layout';
@@ -30,6 +30,9 @@ export const Router = () => {
         <Layout>
           <Verify />
         </Layout>
+      </Route>
+      <Route path="/">
+        <Redirect to={ROUTES.LANDING} />
       </Route>
     </Switch>
   </BrowserRouter>)

@@ -14,7 +14,7 @@ export const Login = () => {
     const [email, setEmail] = useState("");
 	const [{ user, availableUsers }, dispatch] = useStoreContext();
 
-    if (user) return <Redirect to={ROUTES.HOME} />;
+    if (user) return <Redirect to={ROUTES.REPORTS} />;
 
     const submit = async (event) => {
         event.preventDefault();
