@@ -1,7 +1,11 @@
 import express from "express";
 import { validateRequest } from "../middleware/validateRequest";
 import { validateUser } from "../validators/userValidator";
-import { notifyHandler, registerProductHandler, updateProductHandler } from "./controller";
+import {
+  notifyHandler,
+  registerProductHandler,
+  updateProductHandler
+} from "./controller";
 import { productValidator, updateValidator } from "./validator";
 
 const router = express.Router();
