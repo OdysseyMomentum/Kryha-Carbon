@@ -1,8 +1,9 @@
-import { insertReport } from "../db/handlers/report";
+import { findOneReportByEmail, insertReport } from "../db/handlers/report";
 import { connectNode, sendHash } from "../services/ethereum";
 import { Report as ReportType } from "../types/report";
 import { User } from "../types/user";
 import { hashData } from "../utils/hashData";
+import { verifyClaims } from "../utils/verifyClaims";
 import { findUser } from "./user";
 
 export const createReport = async (report: ReportType) => {
@@ -12,11 +13,10 @@ export const createReport = async (report: ReportType) => {
 
   // find user
   const user: User = await findUser(report.email);
-  console.log(user);
 
   // send the hash to blockchain
   const { web3, contract } = await connectNode();
-  const res = await sendHash(reportHash, web3, contract, user.accountId);
+  await sendHash(reportHash, web3, contract, user.accountId);
 
   // store report in db
   const response = await insertReport(report);
@@ -25,4 +25,20 @@ export const createReport = async (report: ReportType) => {
   }
 
   return reportHash;
+};
+
+export const verifyReport = async (
+  email: string
+): Promise<ReportType | Error> => {
+  // Retrieve report
+  const report: ReportType = await findOneReportByEmail(email);
+
+  // verify claims
+  try {
+    verifyClaims(report);
+  } catch (error) {
+    return error;
+  }
+
+  return report;
 };
