@@ -8,4 +8,17 @@ module.exports = {
       network_id: "*",
     },
   },
+  contracts_directory: "./contracts",
+  contracts_build_directory: "./build",
+  compilers: {
+    solc: {
+      version: "0.5.1",
+      settings: {
+        optimizer: {
+          enabled: true,
+          runs: 200,
+        },
+      },
+    },
+  },
 };

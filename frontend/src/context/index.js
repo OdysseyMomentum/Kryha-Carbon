@@ -3,7 +3,7 @@ import { getUserAccounts } from '../actions/user';
 
 const initialState = Object.freeze({
   user: undefined,
-  availableUsers: undefined,
+  availableUsers: [],
 });
 
 const Context = createContext(undefined);

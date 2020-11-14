@@ -5,7 +5,7 @@ import { loginValidator } from "./validator";
 
 const router = express.Router();
 
-router.get("/user/login", loginValidator, validateRequest, loginHandler);
+router.post("/user/login", loginValidator, validateRequest, loginHandler);
 router.post("/user/register", registerHandler);
 router.get("/user/all", findUsersHandler);
 
