@@ -6,4 +6,5 @@ export interface Product {
   category: string;
   midstream?: Partner;
   upstream?: Partner;
+  stars: number;
 }
