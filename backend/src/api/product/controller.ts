@@ -1,5 +1,9 @@
 import { Request, Response } from "express";
-import { registerProduct, updateProduct } from "../../core/product";
+import {
+  notifyUpstream,
+  registerProduct,
+  updateProduct
+} from "../../core/product";
 
 export const registerProductHandler = async (
   req: Request,
@@ -14,13 +18,17 @@ export const registerProductHandler = async (
 };
 
 export const updateProductHandler = async (req: Request, res: Response) => {
-  const response = await updateProduct(req.body.productName, req.body.email);
+  const response = await updateProduct(
+    req.body.productName,
+    req.body.email,
+    req.body.partnerEmail
+  );
 
   if (!response) {
     return res.status(500).json({ message: "Product update failed" });
   }
 
-  return res.status(200).json({ message: "success" });
+  return res.status(200).json({ message: "success", result: response });
 };
 
 export const notifyHandler = async (req: Request, res: Response) => {
@@ -30,5 +38,5 @@ export const notifyHandler = async (req: Request, res: Response) => {
     return res.status(500).json({ message: "Product update failed" });
   }
 
-  return res.status(200).json({ message: "success" });
+  return res.status(200).json({ message: "success", result: response });
 };

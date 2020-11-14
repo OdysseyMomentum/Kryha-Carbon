@@ -1,5 +1,9 @@
 import { Request, Response } from "express";
-import { createReport, verifyReport } from "../../core/report";
+import {
+  createReport,
+  retrieveAllReports,
+  verifyReport
+} from "../../core/report";
 import { Report as ReportType } from "../../types/report";
 
 export const createReportHandler = async (
@@ -34,4 +38,17 @@ export const verifyHandler = async (
   }
 
   return res.status(200).json({ message: "success" });
+};
+
+export const retrieveAllHandler = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
+  const response = await retrieveAllReports(req.body.email);
+
+  if (!response) {
+    return res.status(500).json({ message: "Report verification failed" });
+  }
+
+  return res.status(200).json({ message: "success", result: response });
 };
