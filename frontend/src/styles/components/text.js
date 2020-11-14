@@ -3,7 +3,7 @@ import fontSize from "../typography";
 import color from "../color";
 
 export const H1 = styled.h1`
-  font-family: Inter;
+  font-family: 'Inter', sans-serif;
   font-size: ${(props) => (props.large ? fontSize[4] : fontSize[3])};
   line-height: 29px;
   margin: 0;
@@ -18,7 +18,7 @@ export const H3 = styled.h3`
   color: ${props=>props.color || color.darkPurple};;
 `;
 export const H4 = styled.h4`
-  font-family: Exo 2;
+  font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
