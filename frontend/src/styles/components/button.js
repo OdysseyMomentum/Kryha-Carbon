@@ -2,7 +2,6 @@ import styled from "styled-components";
 // styles
 import color from "../color";
 import fontSize from "../typography";
-import elevation from "../elevation";
 
 const Button = styled.button`
   display: flex;
@@ -14,9 +13,7 @@ const Button = styled.button`
   padding: 8px 24px;
   border: none;
   cursor: pointer;
-  :hover {
-    box-shadow: ${elevation[1]};
-  }
+
 `;
 export const ButtonPrimary = styled(Button)`
   color: ${color.white};

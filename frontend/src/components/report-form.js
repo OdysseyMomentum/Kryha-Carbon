@@ -1,7 +1,8 @@
 import React, { useState } from "react"
 //import imagereport from "../assests/imagereport.jpg"
-import star from "../assests/Star.png"
 
+import { ButtonPrimary } from "../styles/components/button"
+import {Inputs} from "../styles/components"
 function ReportForm() {
 
     const [state, setState] = useState({
@@ -26,6 +27,8 @@ function ReportForm() {
       })
     }
 
+    const handleInput = (event)=>setState(prevState=>({...prevState, [event.target.name]: event.target.value}))
+
   return(
     <div style = {row}>
       <div style= {{...column, ...left}}>
@@ -40,92 +43,18 @@ function ReportForm() {
           <hr style = {line}/>
         <div className = "report-form">
           <form onSubmit = {handleSubmit}>
-          <label style = {label1} >
-              YEAR
-              <input style = {yearinput}
-                id = "year"
-                name = "year"
-                type = "date"
-                value = {state.year}
-                placeholder = "2023"
-                onChange={handleChange}
-              />
-            </label>
+            <Inputs.Input label="YEAR" value={state.year} name="year" onChange={handleInput}/>
+            <br/>
+            <Inputs.Input label="EMISSIONS" value={state.EMISSIONS} name="emissions" onChange={handleInput}/>
             <br />
-
-            <label style = {label2} >
-              EMISSIONS
-              <input style = {inputstyle}
-                id = "emissions"
-                name = "emissions"
-                type = "number"
-                value = {state.emissions}
-                placeholder = "AMOUNT"
-                min = "1"
-                onChange={handleChange}
-              />
-            </label>
+            <Inputs.Input label="PRODUCT" value={state.product} name="product" onChange={handleInput}/>
             <br />
-
-            <label style = {label3} >
-              PRODUCT
-              <input style = {inputstyle}
-                id = "product"
-                name= "product"
-                type = "number"
-                value = {state.product}
-                placeholder = "AMOUNT"
-                min = "1"
-                onChange={handleChange}
-              />
-
-            </label>
+            <Inputs.Input label="COMPENSATION" value={state.compensation} name="compensation" onChange={handleInput}/>
             <br />
-
-            <label style = {label4} >
-              COMPENSATION
-              <div style ={inputstyle4}>
-                <input style = {rectangle2}
-                  id = "compensation"
-                  name = "compensation"
-                  type = "number"
-                  value = {state.compensation}
-                  placeholder = "AMOUNT"
-                  min = "1"
-                  onChange={handleChange}
-                />
-              </div>
-            </label>
+            <Inputs.Select label="RATIO" value={state.ratio} name="ratio" onChange={handleInput}/>
+            <Inputs.Option />
             <br />
-
-
-            <label style = {label5} for="ratio">ratio</label>
-            <div style = {selectoption}>
-              <select style = {rectangle1}
-                id = "ratio"
-                name = "ratio"
-                value = {state.ratio}
-                onChange = {handleChange}
-              >
-                <option value="">-----</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-
-              </select>
-            </div>
-              <div style = {alignstar1}>
-                <img src= {star} alt="star"/>
-              </div>
-              <div style = {alignstar2}>
-                <img src= {star} alt="star"/>
-              </div>
-              <div style = {alignstar3}>
-                <img src= {star} alt="star"/>
-              </div>
-
-            <br />
-
-            <button style = {reportbutton}>DONE</button>
+            <ButtonPrimary style={reportbutton}>DONE</ButtonPrimary>
           </form>
         </div>
       </div>

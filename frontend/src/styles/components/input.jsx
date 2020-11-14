@@ -5,7 +5,6 @@ import styled from "styled-components";
 import color from "../color";
 import { P } from "./text";
 import fontSize from "../typography";
-import * as themeConf from "../theme";
 
 export const Select = styled.select`
   background: transparent;
@@ -15,7 +14,7 @@ export const Select = styled.select`
   padding: 0 5px;
   border: none;
   font-family: "Exo 2", sans-serif;
-  color: ${themeConf.text};
+  color: ${color.darkPurple};
   font-size: ${fontSize[1]};
   /* line-height: 24px; */
   text-transform: uppercase;
@@ -26,15 +25,6 @@ export const Option = styled.option`
   background: transparent;
 `;
 
-const SelectProps = {
-  label,
-  options,
-  selected,
-  disabled,
-  width,
-  style,
-  handleDropdown
-};
 
 // Select props
   // label,
@@ -70,8 +60,8 @@ const InputField = styled.input`
   width: ${(props) => props.width || "100%"};
   border: none;
   border-radius: 30px;
-  color: ${themeConf.text};
-  background: ${themeConf.inputBackground};
+  color: ;
+  background: ;
   padding: 20px;
   font-family: "Exo 2", normal;
   font-size: ${fontSize[2]};
@@ -124,8 +114,8 @@ const InputFieldArea = styled.textarea`
   height: ${(props) => props.height || "110%"};
   border: none;
   border-radius: 30px;
-  color: ${themeConf.text};
-  background: ${themeConf.inputBackground};
+  color: ${color.darkPurple};
+  background: ;
   padding: 22px 60px 22px 22px;
   font-size: ${fontSize[2]};
   :focus {

@@ -11,11 +11,10 @@ export const Router = () => (
   <BrowserRouter>
     <Switch>
       <Route exact path={ROUTES.LOGIN}>
-        <Layout>
-        <Login />
-        </Layout>
+      <ReportForm />
       </Route>
-      <Route exact path={ROUTES.REPORT_FORM}>
+      <Route exact path={ROUTES.REPORT}>
+
         <Layout>
           <ReportForm />
         </Layout>
