@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-// import { Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
-// import { useStore } from '../context';
-// import { ROUTES } from "../router/routes";
+import { useStore } from '../context';
+import { ROUTES } from "../router/routes";
 import { SidebarBackgroundImage } from '../assets';
 import color from '../styles/color';
 import { Text } from '../styles/components';
@@ -11,9 +11,9 @@ import { UserCard } from './user-card';
 
 export const Layout = (props) => {
 	const { children } = props;
-	// const { user } = useStore();
+	const { user } = useStore();
 
-	// if (!user) return <Redirect to={ROUTES.LOGIN} />;
+	if (!user) return <Redirect to={ROUTES.LANDING} />;
 
 	return (
 		<Container>
@@ -32,7 +32,6 @@ const Container = styled.div`
 	display: flex;
 	width: 100%;
 	height: 100%;
-	max-width: 1000px;
 	justify-content: flex-start;
 `;
 
