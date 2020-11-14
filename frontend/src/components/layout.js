@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 // import { useStore } from '../context';
 // import { ROUTES } from "../router/routes";
+import { SidebarBackgroundImage } from '../assets';
 
 export const Layout = (props) => {
 	const { children } = props;
@@ -11,11 +12,30 @@ export const Layout = (props) => {
 
 	// if (!user) return <Redirect to={ROUTES.LOGIN} />;
 
-	return <Container>{children}</Container>;
+	return (
+		<Container>
+			<SideSection>
+				<p>side section</p>
+			</SideSection>
+			{children}
+		</Container>
+	)
 };
 
 const Container = styled.div`
+	display: flex;
 	width: 100%;
-	margin: 0 auto;
+	height: 100%;
 	max-width: 1000px;
+	justify-content: flex-start;
 `;
+
+const SideSection = styled.div`
+	width: 351px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	background-image: url(${SidebarBackgroundImage});
+`
