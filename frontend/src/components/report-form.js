@@ -33,9 +33,7 @@ function ReportForm() {
     <div style = {row}>
       <div style= {{...column, ...left}}>
         {/*<img src= {imagereport} alt="side bar"/>*/}
-        <div  style = {sidebar}>
-          <p>Report &amp; audit carbon emissions for a more sustainable supply chain</p>
-        </div>
+  
       </div>
 
       <div style={{...column, ...right}}>

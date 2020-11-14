@@ -5,6 +5,9 @@ import styled from 'styled-components';
 // import { useStore } from '../context';
 // import { ROUTES } from "../router/routes";
 import { SidebarBackgroundImage } from '../assets';
+import color from '../styles/color';
+import { Text } from '../styles/components';
+import { UserCard } from './user-card';
 
 export const Layout = (props) => {
 	const { children } = props;
@@ -15,7 +18,10 @@ export const Layout = (props) => {
 	return (
 		<Container>
 			<SideSection>
-				<p>side section</p>
+				<UserCard />
+				<div style={{ width: 232, marginLeft: "35px", marginTop: "400px" }}>
+					<Text.H4 color={color.neon} style={{textTransform: "none"}}>Report & audit carbon emissions for a more sustainable supply chain</Text.H4>
+				</div>
 			</SideSection>
 			{children}
 		</Container>
@@ -35,7 +41,9 @@ const SideSection = styled.div`
 	height: 100%;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	align-items: flex-start;
 	justify-content: flex-start;
 	background-image: url(${SidebarBackgroundImage});
+	background-size: 351px 100%;
+
 `
