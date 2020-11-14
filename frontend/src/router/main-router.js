@@ -1,7 +1,7 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
-import { Home } from '../components/home';
+import { Reports } from '../components/reports';
 import { Login } from '../components/login';
 import { Layout } from '../components/layout';
 import { ROUTES } from "./routes";
@@ -10,9 +10,9 @@ import ReportForm from "../components/report-form"
 export const Router = () => (
   <BrowserRouter>
     <Switch>
-      <Route exact path={ROUTES.HOME}>
+      <Route exact path={ROUTES.REPORTS}>
         <Layout>
-          <Home />
+          <Reports />
         </Layout>
       </Route>
       <Route exact path={ROUTES.REPORT_FORM}>
@@ -22,6 +22,9 @@ export const Router = () => (
       </Route>
       <Route exact path={ROUTES.LOGIN}>
         <Login />
+      </Route>
+      <Route path="/">
+        <Redirect to={ROUTES.REPORTS} />
       </Route>
     </Switch>
   </BrowserRouter>
