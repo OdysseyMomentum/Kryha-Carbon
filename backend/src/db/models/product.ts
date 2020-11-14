@@ -13,6 +13,11 @@ const partnerSchema = new Schema<PartnerType>(
       type: Boolean,
       required: true,
       default: false
+    },
+    stars: {
+      type: Number,
+      required: true,
+      default: 0
     }
   },
   {
@@ -46,6 +51,11 @@ const productSchema = new Schema<ProductType>(
     upstream: {
       type: partnerSchema,
       required: false
+    },
+    stars: {
+      type: Number,
+      required: true,
+      default: 0
     }
   },
   {
