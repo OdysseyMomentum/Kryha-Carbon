@@ -1,8 +1,9 @@
 export const ROUTES = {
   LANDING: "/",
-  REPORT: "/report",
-  PRODUCT: "/product",
-  VERIFY: "/verify"
+  PRODUCT: "/products",
+  VERIFY: "/verify",
+  REPORT_FORM: "/report-form",
+  REPORTS: "/reports",
 };
 
 export default ROUTES;
