@@ -4,4 +4,4 @@ WORKDIR /app
 
 RUN npm install -g ganache-cli
 
-CMD ["ganache-cli", "-h", "0.0.0.0"]
+CMD ["ganache-cli", "-h", "0.0.0.0", "-m", "stem yellow father provide afraid either embark stock note budget school lens"]
