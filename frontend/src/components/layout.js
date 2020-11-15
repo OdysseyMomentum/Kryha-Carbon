@@ -13,12 +13,12 @@ export const Layout = (props) => {
 	const { children } = props;
 	const { user } = useStore();
 
-	if (!user) return <Redirect to={ROUTES.LANDING} />;
+	// if (!user) return <Redirect to={ROUTES.LANDING} />;
 
 	return (
 		<Container>
 			<SideSection>
-				<UserCard />
+				{/* <UserCard /> */}
 				<div style={{ width: 232, marginLeft: "35px", marginTop: "400px" }}>
 					<Text.H4 color={color.neon} style={{textTransform: "none"}}>Report & audit carbon emissions for a more sustainable supply chain</Text.H4>
 				</div>

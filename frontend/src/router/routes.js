@@ -6,6 +6,7 @@ export const ROUTES = {
   REPORT_FORM: "/report-form",
   PRODUCT_FORM: "/product-form",
   REPORTS: "/reports",
+  DEMO: "/results"
 };
 
 export default ROUTES;
