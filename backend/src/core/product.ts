@@ -1,4 +1,8 @@
-import { insertProduct, updateProductByName } from "../db/handlers/product";
+import {
+  findManyProducts,
+  insertProduct,
+  updateProductByName
+} from "../db/handlers/product";
 import { findOneReportByEmail } from "../db/handlers/report";
 import { findOneByEmail } from "../db/handlers/user";
 import { emitMessage } from "../services/websocket";
@@ -67,4 +71,9 @@ export const notifyUpstream = async (productName: string, email: string) => {
     content: { sender: product.email, receiver: email, product }
   });
   return product;
+};
+
+export const fetchAllProducts = async (email: string) => {
+  const products = await findManyProducts({ email }, 50);
+  return products;
 };

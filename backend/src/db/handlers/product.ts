@@ -21,3 +21,15 @@ export const updateProductByName = async (
     throw e;
   });
 };
+
+export const findManyProducts = async (
+  query: Record<string, unknown>,
+  limit: number
+): Promise<ProductType[]> => {
+  return Product.find(query)
+    .limit(limit)
+    .catch((e) => {
+      console.log(e);
+      throw e;
+    });
+};
