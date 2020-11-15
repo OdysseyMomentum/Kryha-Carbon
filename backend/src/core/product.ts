@@ -18,7 +18,8 @@ export const registerProduct = async (email: string, productrequest: any) => {
       existence: false,
       stars: 0
     },
-    stars: 0
+    stars: 0,
+    verified: false
   };
   const res = await insertProduct(product);
   if (!res) {
@@ -54,7 +55,8 @@ export const updateProduct = async (
       (product.midstream!.stars + product.upstream!.stars) / 2;
     const productStars = Math.floor(productRate);
     product = updateProductByName(productName, {
-      stars: productStars
+      stars: productStars,
+      verified: true
     });
   }
 

@@ -7,4 +7,5 @@ export interface Product {
   midstream?: Partner;
   upstream?: Partner;
   stars: number;
+  verified: boolean;
 }
