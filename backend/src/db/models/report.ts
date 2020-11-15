@@ -21,8 +21,7 @@ export const reportSchema = new Schema<ReportType>(
     },
     hash: {
       type: String,
-      required: true,
-      unique: true
+      required: true
     }
   },
   {
