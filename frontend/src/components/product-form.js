@@ -79,10 +79,10 @@ export const ProductForm = () => {
 	});
 
 	const submit = async () => {
-        const res = await createProduct(state, user.email);
+        const res = await createProduct({ partner: state.partners[0].email, category: state.category, name: state.name }, user.email);
 
         if (res) {
-			await getProducts(dispatch);
+			await getProducts(user.email, dispatch);
 			toast.success("Product successfully created");
 			return history.push(ROUTES.PRODUCTS);
         } else {
