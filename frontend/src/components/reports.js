@@ -31,7 +31,10 @@ export const Reports = () => {
 
 	return (
         <Container>
-            <h2>Reports</h2>
+            <Row style={{justifyContent: "flex-start"}}>
+                <h2 style={{ cursor: "pointer"}} onClick={()=>history.push(ROUTES.REPORTS)}>Reports</h2>
+                <h2 style={{ color: color.darkPurple, paddingLeft: "56px", cursor: "pointer"}} onClick={()=>history.push(ROUTES.VERIFY)}>Verifications (1)</h2>
+            </Row>
             <Form onClick={() => history.push(ROUTES.REPORT_FORM)}>
                 <p>{new Date().getFullYear() + 1}</p>
                 <p>
@@ -83,3 +86,9 @@ const Form = styled(ListItemContainer)`
 		}
     }
 `;
+const Row = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+`

@@ -11,7 +11,7 @@ import { useHistory } from "react-router-dom"
 import ROUTES from "../router/routes"
 import { StarRating } from "./shared/star-rating"
 
-const ReportForm = () => {
+const VerifyForm = () => {
 
   const history = useHistory()
   const { user } = useStore()
@@ -41,35 +41,22 @@ const ReportForm = () => {
     <Container>
       <BackArrow style={{ marginTop: "40px", cursor: "pointer" }} onClick={()=>history.push(ROUTES.REPORTS)}/>
       <div style={{marginBottom: "60px", borderBottom: "1px solid "+ color.darkPurple, width: "100%"}}>
-        <h2>Create Report</h2>
+        <h2>Verification supply chain partners</h2>
       </div>
 
       <form onSubmit={handleSubmit}>
-        <Row>
-          <H3>YEAR</H3>
-          <Inputs.Input width="346px" value={state.year} name="year" onChange={handleInput} />
-          <H3></H3>
+        <Row style={{justifyContent: "flex-end"}}>
+          <H3>WATTO PHONE 6</H3>
         </Row>
         <Row>
-          <H3>EMISSIONS</H3>
-          <Inputs.Input width="346px" transparent value={state.EMISSIONS} name="emissions" onChange={handleInput} />
-          <H3>tonnes co2</H3>
+          <H3 width="400px">WATTO</H3>
+          <H3 color={color.darkPurple}>DOWNSTREAM</H3>
         </Row>
         <Row>
-          <H3>PRODUCT</H3>
-          <Inputs.Input width="346px" transparent value={state.product} name="product" onChange={handleInput} />
-          <H3>tonnes</H3>
+          <H3 width="400px">SAMSUNG ELECTRONICS (YOU)</H3>
+          <H3 color={color.darkPurple}>MIDSTREAM</H3>
         </Row>
-        <Row>
-          <H3>COMPENSATION</H3>
-          <Inputs.Input width="346px" transparent value={state.compensation} name="compensation" onChange={handleInput} />
-          <H3>tonnes co2</H3>
-        </Row>
-        <Row>
-          <H3>RATING</H3>
-          <Inputs.Input width="346px" value={state.ratio} name="ratio" onChange={handleInput} />
-          <StarRating rating={2} width="200px"/>
-        </Row>
+        
 
         <ButtonPrimary style={{marginTop: "80px", marginLeft: "525px"}}>DONE</ButtonPrimary>
       </form>
@@ -77,7 +64,7 @@ const ReportForm = () => {
   )
 }
 
-export default ReportForm
+export default VerifyForm
 
 const Container = styled.div`
     padding: 0 100px;
@@ -93,7 +80,8 @@ const Container = styled.div`
 `;
 
 const H3 = styled(Text.H3)`
-  width: 200px;
+  width: ${props => props.width || "200px"};
+  color: ${props=>props.color || color.neon};
   text-transform: uppercase;
 `
 const Row = styled.div`
