@@ -1,16 +1,16 @@
 version: "3.2"
 
 services:
-  frontend:
-    build:
-      context: .
-      dockerfile: Dockerfile.frontend
-      args:
-        - REACT_APP_API=${REACT_APP_API}
-    ports:
-      - target: 3000
-        published: 3000
-    restart: on-failure
+  # frontend:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.frontend
+  #     args:
+  #       - REACT_APP_API=${REACT_APP_API}
+  #   ports:
+  #     - target: 3000
+  #       published: 3000
+  #   restart: on-failure
 
   backend:
     build:
@@ -30,7 +30,7 @@ services:
     image: mongo:4
     ports:
       - target: 27017
-        published: 27018
+        published: 27017
     volumes:
       - .mongo/db/:/data/db/
     restart: on-failure

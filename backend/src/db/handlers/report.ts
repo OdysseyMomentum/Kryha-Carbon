@@ -17,6 +17,13 @@ const _findOne = async (
   });
 };
 
+export const findOneReportByEmail = async (email: string) => {
+  return _findOne({ email }).catch((e) => {
+    console.log(e);
+    throw e;
+  });
+};
+
 export const findOneByHash = async (
   hash: string,
   email: string
@@ -24,7 +31,7 @@ export const findOneByHash = async (
   return _findOne({ hash, email });
 };
 
-export const findMany = async (
+export const findManyReports = async (
   query: Record<string, unknown>,
   limit: number
 ): Promise<ReportType[]> => {

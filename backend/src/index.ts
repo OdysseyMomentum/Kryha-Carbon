@@ -2,8 +2,10 @@ import http from "http";
 import { app } from "./app";
 import { PORT, NODE_ENV } from "./constants";
 import { startMongo } from "./services/mongo";
+import { setupWebSocket } from "./services/websocket";
 
 const server = http.createServer(app);
+setupWebSocket(server);
 
 process.on("unhandledRejection", (err) => {
   console.error("unhandledRejection", err);

@@ -1,7 +1,6 @@
 import express from "express";
 import router from "./api";
 import expressConfig from "./services/express";
-// import router from "./api/index";
 
 const app: express.Application = express();
 expressConfig(app);

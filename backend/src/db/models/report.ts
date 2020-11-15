@@ -15,10 +15,13 @@ export const reportSchema = new Schema<ReportType>(
       type: Number,
       required: true
     },
+    stars: {
+      type: Number,
+      required: true
+    },
     hash: {
       type: String,
-      required: true,
-      unique: true
+      required: true
     }
   },
   {

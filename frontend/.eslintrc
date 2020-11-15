@@ -12,8 +12,8 @@
   },
   "rules": {
     "no-unused-vars": "warn",
-    "no-console": "warn",
-    "no-eval": "error",
-    "import/first": "error"
+    "no-console": "warn"
+    // "no-eval": "error",
+    // "import/first": "error"
   }
 }
