@@ -8,9 +8,9 @@ export const StarRating = (props) => {
 	const { rating } = props;
 
 	return (
-        <Container>
+        <Container width={props.width}>
             {[1,2,3].map((star) => (star <= rating
-                ? <OutlinedStar style={{ fill: color.darkPurple }} key={star} />
+                ? <OutlinedStar style={{ fill: props.fill || color.darkPurple }} key={star} />
                 : <OutlinedStar key={star} />
             ))}
         </Container>
@@ -19,6 +19,7 @@ export const StarRating = (props) => {
 
 
 const Container = styled.div`
+	width: ${props=>props.width};
 	svg {
 		&:nth-child(2) {
 			margin: 0 8px;

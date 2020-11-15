@@ -9,6 +9,7 @@ import { useStore } from "../context"
 import color from "../styles/color"
 import { useHistory } from "react-router-dom"
 import ROUTES from "../router/routes"
+import { StarRating } from "./shared/star-rating"
 
 const ReportForm = () => {
 
@@ -27,9 +28,9 @@ const ReportForm = () => {
       createReport({
         email: user.email,
         report: {
-          emissions: state.emissions,
-          year: state.year,
-          stars: Math.round(Math.random()*3),
+          emissions: parseInt(state.emissions),
+          year: parseInt(state.year),
+          stars: parseInt(Math.round(Math.random()*3)),
         }
       })
     }
@@ -40,7 +41,7 @@ const ReportForm = () => {
     <Container>
       <BackArrow style={{ marginTop: "40px", cursor: "pointer" }} onClick={()=>history.push(ROUTES.REPORTS)}/>
       <div style={{marginBottom: "60px", borderBottom: "1px solid "+ color.darkPurple, width: "100%"}}>
-        <h2>CreateReport</h2>
+        <h2>Create Report</h2>
       </div>
 
       <form onSubmit={handleSubmit}>
@@ -67,7 +68,7 @@ const ReportForm = () => {
         <Row>
           <H3>RATING</H3>
           <Inputs.Input width="346px" value={state.ratio} name="ratio" onChange={handleInput} />
-          <H3>***</H3>
+          <StarRating rating={2} width="200px"/>
         </Row>
 
         <ButtonPrimary style={{marginTop: "80px", marginLeft: "525px"}}>DONE</ButtonPrimary>
@@ -93,7 +94,7 @@ const Container = styled.div`
 
 const H3 = styled(Text.H3)`
   width: 200px;
-  text-transform: uppercase
+  text-transform: uppercase;
 `
 const Row = styled.div`
   display: flex;

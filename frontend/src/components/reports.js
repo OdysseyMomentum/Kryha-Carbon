@@ -21,17 +21,19 @@ export const Reports = () => {
 
     useEffect(() => {
         async function GetReports() {
-            getReports(dispatch)
+            getReports(user.email, dispatch)
         }
         GetReports()
-        console.log(reports)
     }, [dispatch])
 
 	if (user.accountType === "downstream") return <Redirect to={ROUTES.PRODUCTS} />;
 
 	return (
         <Container>
-            <h2>Reports</h2>
+            <Row style={{justifyContent: "flex-start"}}>
+                <h2 style={{ cursor: "pointer"}} onClick={()=>history.push(ROUTES.REPORTS)}>Reports</h2>
+                <h2 style={{ color: color.darkPurple, paddingLeft: "56px", cursor: "pointer"}} onClick={()=>history.push(ROUTES.VERIFY)}>Verifications (1)</h2>
+            </Row>
             <Form onClick={() => history.push(ROUTES.REPORT_FORM)}>
                 <p>{new Date().getFullYear() + 1}</p>
                 <p>
@@ -40,13 +42,22 @@ export const Reports = () => {
                     <Plus />
                 </p>
             </Form>
-            {years.map((year, index) => (
-                <ListItem
+            <ScrollDiv>
+                {reports && reports.filter((report)=>report.email===user.email).map((report, index) => (
+                    <ListItem
+                    leftText={report.year}
+                    rating={report.stars}
+                    rightText="audited"
+                    />
+                    ))}
+                {years.map((year, index) => (
+                    <ListItem
                     leftText={year}
                     rating={index + 1}
                     rightText="audited"
-                />
-            ))}
+                    />
+                    ))}
+            </ScrollDiv>
         </Container>
     );
 };
@@ -63,6 +74,8 @@ const Container = styled.div`
         margin-bottom: 60px;
         margin-top: 100px;
     }
+    max-height: 100%;
+    overflow-y: hidden;
 `;
 
 const Form = styled(ListItemContainer)`
@@ -82,4 +95,16 @@ const Form = styled(ListItemContainer)`
             align-items: center;
 		}
     }
+    overflow-y: scroll;
+    max-height: 500px;
 `;
+const ScrollDiv = styled.div`
+    height: 550px;
+    overflow-y: scroll;
+`
+const Row = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+`

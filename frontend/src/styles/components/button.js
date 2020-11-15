@@ -21,20 +21,12 @@ export const ButtonPrimary = styled(Button)`
 `;
 
 export const ButtonTertiary = styled(Button)`
-  background-color: transparent;
-  color: ${color.lightBlue};
-  border: none;
+  background-color: ${color.darkPurple};
+  color: ${color.lightPurple};
+  border: 1px solid ${color.darkPurple};
   :hover {
     box-shadow: none;
-    border-color: ${color.blueGreen};
-  }
-  :active {
-    box-shadow: none;
-    border-color: ${color.blueGreen};
-  }
-  :focus {
-    box-shadow: none;
-    border-color: ${color.blueGreen};
+    border-color: ${color.neon};
   }
   :disabled {
     border-color: ${color.grey};
