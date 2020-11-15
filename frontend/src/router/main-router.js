@@ -10,7 +10,7 @@ import { Products } from "../components/products";
 import { ProductForm } from "../components/product-form";
 import { ROUTES } from "./routes";
 import VerifyForm from "../components/verify-form";
-import {NodeDemo} from '../components/nodedemo/demo'
+import {Graph} from '../components/nodedemo/graph'
 
 export const Router = () => {
 
@@ -22,7 +22,7 @@ export const Router = () => {
         </Route>
         <Route exact path={ROUTES.DEMO}>
         <Layout>
-          <NodeDemo/>
+          <Graph/>
         </Layout>
       </Route>
         <Route exact path={ROUTES.REPORTS}>
