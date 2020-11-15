@@ -11,8 +11,6 @@ Charles allows companies to report and audit their emissions. Experts to benchma
 
 Charles facilitates both positive consumer behavior change and company supply chain optimization.
 
-Slide 2
-[1:15]
 So how does it work?m (USP’s)
 Charles has 3 layers that all come together and become a powerful and versatile industry-agnostic tool. 
 
