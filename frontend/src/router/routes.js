@@ -1,8 +1,9 @@
 export const ROUTES = {
   LANDING: "/",
-  PRODUCT: "/products",
+  PRODUCTS: "/products",
   VERIFY: "/verify",
   REPORT_FORM: "/report-form",
+  PRODUCT_FORM: "/product-form",
   REPORTS: "/reports",
 };
 

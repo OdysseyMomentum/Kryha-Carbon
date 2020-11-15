@@ -22,7 +22,7 @@ export const ListItem = (props) => {
 
 export const ListItemContainer = styled.div`
 	width: 100%;
-	margin: 18px auto;
+	margin: 0 auto 18px;
 	padding: 40px;
 	display: flex;
 	background-color: ${color.lightPurple};
