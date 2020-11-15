@@ -39,12 +39,9 @@ const VerifyForm = () => {
 
   return(
     <Container>
-      <div>
       <BackArrow style={{ marginTop: "40px", cursor: "pointer" }} onClick={()=>history.push(ROUTES.REPORTS)}/>
-      <div style={{marginBottom: "60px", borderBottom: "1px solid " + color.darkPurple, width: "100%"}}>
+      {/* <div style={{marginBottom: "60px", borderBottom: "1px solid " + color.darkPurple, width: "100%"}}> */}
         <h2>Verification supply chain partners</h2>
-      </div>
-
       <form onSubmit={handleSubmit}>
         <Row style={{justifyContent: "flex-end"}}>
           <H3>WATTO PHONE 6</H3>
@@ -56,7 +53,7 @@ const VerifyForm = () => {
         <Row>
           <H3 width="400px">SAMSUNG ELECTRONICS (YOU)</H3>
           <H3 color={color.darkPurple}>MIDSTREAM</H3>
-          </Row>
+        </Row>
           
         <Row style={{marginTop: "30px"}}>
           <Text.H3 style={{ width: "400px" }}>Do you verify you are part of this product?</Text.H3>
