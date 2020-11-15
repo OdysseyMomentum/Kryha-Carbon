@@ -28,7 +28,7 @@ export const updateProductHandler = async (req: Request, res: Response) => {
     return res.status(500).json({ message: "Product update failed" });
   }
 
-  return res.status(200).json({ message: "success" });
+  return res.status(200).json({ message: "success", result: response });
 };
 
 export const notifyHandler = async (req: Request, res: Response) => {
@@ -38,5 +38,5 @@ export const notifyHandler = async (req: Request, res: Response) => {
     return res.status(500).json({ message: "Product update failed" });
   }
 
-  return res.status(200).json({ message: "success" });
+  return res.status(200).json({ message: "success", result: response });
 };

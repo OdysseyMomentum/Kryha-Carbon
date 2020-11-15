@@ -1,4 +1,8 @@
-import { findOneReportByEmail, insertReport } from "../db/handlers/report";
+import {
+  findManyReports,
+  findOneReportByEmail,
+  insertReport
+} from "../db/handlers/report";
 import { connectNode, sendHash } from "../services/ethereum";
 import { Report as ReportType } from "../types/report";
 import { User } from "../types/user";
@@ -41,4 +45,12 @@ export const verifyReport = async (
   }
 
   return report;
+};
+
+export const retrieveAllReports = async (
+  email: string
+): Promise<ReportType[]> => {
+  const reports = await findManyReports({ email }, 50);
+
+  return reports;
 };
