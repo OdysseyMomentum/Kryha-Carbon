@@ -14,6 +14,7 @@ export const StarRating = (props) => {
         </Container>
 	);
 };
+
 const Container = styled.div`
 	svg {
 		&:nth-child(2) {

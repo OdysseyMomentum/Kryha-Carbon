@@ -6,15 +6,19 @@ import { Layout } from '../components/layout';
 import { ROUTES } from "./routes";
 import ReportForm from "../components/report-form"
 import { Verify } from '../components/verify';
+import { NodeDemo } from "../components/nodedemo/demo";
 
-export const Router = () => (
+export const Router = () => {
+  console.log(ROUTES)
+  return (
   <BrowserRouter>
     <Switch>
-      <Route exact path={ROUTES.LOGIN}>
-      <ReportForm />
+      <Route exact path={ROUTES.DEMO}>
+        <Layout>
+          <NodeDemo/>
+        </Layout>
       </Route>
       <Route exact path={ROUTES.REPORT}>
-
         <Layout>
           <ReportForm />
         </Layout>
@@ -24,8 +28,11 @@ export const Router = () => (
           <Verify />
         </Layout>
       </Route>
+      <Route exact path={ROUTES.LOGIN}>
+        <Login />
+      </Route>
     </Switch>
-  </BrowserRouter>
-);
+  </BrowserRouter>)
+}
 
 export default Router;
