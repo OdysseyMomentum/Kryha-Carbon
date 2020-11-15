@@ -14,9 +14,9 @@ export const createReport = async (report) => {
   }
 };
 
-export const getReports = async (dispatch) => {
+export const getReports = async (email,dispatch) => {
   try {
-    const res = await axios.get("/reports/all");
+    const res = await axios.post("/reports/all",{email: email});
       if (res) {
           console.log(res)
         dispatch({ type: "SET_REPORTS", payload: res.data.result });

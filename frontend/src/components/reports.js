@@ -21,10 +21,9 @@ export const Reports = () => {
 
     useEffect(() => {
         async function GetReports() {
-            getReports(dispatch)
+            getReports(user.email, dispatch)
         }
         GetReports()
-        console.log(reports)
     }, [dispatch])
 
 	if (user.accountType === "downstream") return <Redirect to={ROUTES.PRODUCTS} />;
@@ -43,13 +42,22 @@ export const Reports = () => {
                     <Plus />
                 </p>
             </Form>
-            {years.map((year, index) => (
-                <ListItem
+            <ScrollDiv>
+                {reports && reports.map((report, index) => (
+                    <ListItem
+                    leftText={report.year}
+                    rating={report.stars}
+                    rightText="audited"
+                    />
+                    ))}
+                {years.map((year, index) => (
+                    <ListItem
                     leftText={year}
                     rating={index + 1}
                     rightText="audited"
-                />
-            ))}
+                    />
+                    ))}
+            </ScrollDiv>
         </Container>
     );
 };
@@ -66,6 +74,8 @@ const Container = styled.div`
         margin-bottom: 60px;
         margin-top: 100px;
     }
+    max-height: 100%;
+    overflow-y: hidden;
 `;
 
 const Form = styled(ListItemContainer)`
@@ -85,7 +95,13 @@ const Form = styled(ListItemContainer)`
             align-items: center;
 		}
     }
+    overflow-y: scroll;
+    max-height: 500px;
 `;
+const ScrollDiv = styled.div`
+    height: 550px;
+    overflow-y: scroll;
+`
 const Row = styled.div`
   display: flex;
   align-items: center;
