@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: inherit;
   }
   body {
-    font-family: 'Exo 2', sans-serif;
+    font-family: 'Inter', sans-serif;
     color: ${colors.neon};
     background-color: ${colors.lightPurple};
     margin: 0;

@@ -3,6 +3,7 @@ import { getUserAccounts } from '../actions/user';
 
 const initialState = Object.freeze({
   user: undefined,
+  reports: undefined,
   availableUsers: [],
 });
 
@@ -13,6 +14,10 @@ const Reducer = (state, action) => {
   switch (action.type) {
     case "SET_USER":
       return { ...state, user: action.payload };
+    case "SET_REPORTS":
+      return { ...state, reports: action.payload };
+    case "SET_PRODUCTS":
+      return { ...state, products: action.payload };
     case "SET_AVAILABLE_USERS":
       return { ...state, availableUsers: action.payload };
     case "LOGOUT":
