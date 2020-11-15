@@ -31,7 +31,7 @@ export const findOneByHash = async (
   return _findOne({ hash, email });
 };
 
-export const findMany = async (
+export const findManyReports = async (
   query: Record<string, unknown>,
   limit: number
 ): Promise<ReportType[]> => {
