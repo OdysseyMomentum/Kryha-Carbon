@@ -16,6 +16,8 @@ const Reducer = (state, action) => {
       return { ...state, user: action.payload };
     case "SET_REPORTS":
       return { ...state, reports: action.payload };
+    case "SET_PRODUCTS":
+      return { ...state, products: action.payload };
     case "SET_AVAILABLE_USERS":
       return { ...state, availableUsers: action.payload };
     case "LOGOUT":

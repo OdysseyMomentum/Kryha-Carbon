@@ -26,7 +26,7 @@ export const H4 = styled.h4`
   color: ${props=>props.color || color.darkPurple};
 `;
 export const P = styled.p`
-  font-size: ${fontSize[1]};
+  font-size: ${props=> props.fontSize || fontSize[1]};
   font-weight: 600;
   line-height: 14px;
   margin: 0;
