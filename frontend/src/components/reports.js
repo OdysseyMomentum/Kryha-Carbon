@@ -43,7 +43,7 @@ export const Reports = () => {
                 </p>
             </Form>
             <ScrollDiv>
-                {reports && reports.map((report, index) => (
+                {reports && reports.filter((report)=>report.email===user.email).map((report, index) => (
                     <ListItem
                     leftText={report.year}
                     rating={report.stars}

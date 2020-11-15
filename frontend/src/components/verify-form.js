@@ -9,18 +9,14 @@ import { useStore } from "../context"
 import color from "../styles/color"
 import { useHistory } from "react-router-dom"
 import ROUTES from "../router/routes"
-import { StarRating } from "./shared/star-rating"
 
 const VerifyForm = () => {
 
   const history = useHistory()
   const { user } = useStore()
     const [state, setState] = useState({
-      year: "",
-      emissions: "",
-      product: "",
-      compensation: "",
-      ratio: 3
+      verified: 1,
+      section: 1
     })
 
     const handleSubmit = (event) => {
@@ -37,37 +33,71 @@ const VerifyForm = () => {
 
   const handleInput = (event)=>setState(prevState=>({...prevState, [event.target.name]: event.target.value}))
 
-  return(
-    <Container>
-      <BackArrow style={{ marginTop: "40px", cursor: "pointer" }} onClick={()=>history.push(ROUTES.REPORTS)}/>
-      {/* <div style={{marginBottom: "60px", borderBottom: "1px solid " + color.darkPurple, width: "100%"}}> */}
-        <h2>Verification supply chain partners</h2>
-      <form onSubmit={handleSubmit}>
-        <Row style={{justifyContent: "flex-end"}}>
-          <H3>WATTO PHONE 6</H3>
-        </Row>
-        <Row>
-          <H3 width="400px">WATTO</H3>
-          <H3 color={color.darkPurple}>DOWNSTREAM</H3>
-        </Row>
-        <Row>
-          <H3 width="400px">SAMSUNG ELECTRONICS (YOU)</H3>
-          <H3 color={color.darkPurple}>MIDSTREAM</H3>
-        </Row>
-          
-        <Row style={{marginTop: "30px"}}>
-          <Text.H3 style={{ width: "400px" }}>Do you verify you are part of this product?</Text.H3>
-          <Row width="200px">
-            <Buttons.ButtonPrimary style={{marginRight: "10px"}}>YES</Buttons.ButtonPrimary>
-            <Buttons.ButtonTertiary>NO</Buttons.ButtonTertiary>
+  if (state.section === 1) {
+    return (
+      <Container>
+        <div>
+          <div style={{ marginBottom: "60px", borderBottom: "1px solid " + color.darkPurple, width: "100%" }}>
+            <BackArrow style={{ marginTop: "40px", cursor: "pointer" }} onClick={() => history.push(ROUTES.REPORTS)} />
+            <h2>Verification supply chain partners</h2>
+          </div>
+          <form onSubmit={handleSubmit}>
+            <Row style={{ justifyContent: "flex-start" }}>
+              <H3 color={color.darkPurple}>WATTO PHONE 6</H3>
+            </Row>
+            <Row>
+              <H3 width="400px">WATTO</H3>
+              <H3 color={color.darkPurple}>DOWNSTREAM</H3>
+            </Row>
+            <Row>
+              <H3 width="400px">SAMSUNG ELECTRONICS (YOU)</H3>
+              <H3 color={color.darkPurple}>MIDSTREAM</H3>
+            </Row>
+          </form>
+        </div>
+        <div style={{ marginBottom: "200px" }}>
+          <Row style={{ marginTop: "30px" }}>
+            <Text.H3 style={{ width: "400px" }}>Do you verify you are part of this product?</Text.H3>
+            <Row width="200px">
+              {state.verified === 0
+                ? <>
+                  <Buttons.ButtonPrimary style={{ marginRight: "10px" }} onClick={() => setState(prevState=>{ return { ...prevState, verified: 1 }})}>YES</Buttons.ButtonPrimary>
+                  <Buttons.ButtonTertiary onClick={() => setState(prevState=>{ return { ...prevState, verified: 0 }})}>NO</Buttons.ButtonTertiary>
+                </>
+                : <>
+                  <Buttons.ButtonTertiary style={{ marginRight: "10px" }} onClick={() => setState(prevState=>{ return { ...prevState, verified: 1 }})}>YES</Buttons.ButtonTertiary>
+                  <Buttons.ButtonPrimary onClick={() => setState(prevState=>{ return { ...prevState, verified: 0 }})}>NO</Buttons.ButtonPrimary>
+                </>
+              }
+            </Row>
           </Row>
-        </Row>
-        <Text.P style={{textTransform: "none", fontStyle: "italic" }}>If you agree, your report will be verified with your blockchain data</Text.P>
-
-        <ButtonPrimary style={{marginTop: "80px", marginLeft: "525px"}}>DONE</ButtonPrimary>
-      </form>
-    </Container>
-  )
+          <Text.P style={{ textTransform: "none", fontStyle: "italic" }}>If you agree, your report will be verified with your blockchain data</Text.P>
+          <Row style={{ justifyContent: "flex-end" }}>
+            <ButtonPrimary style={{ marginTop: "80px", marginLeft: "525px" }} onClick={()=>setState(prevState =>{ return { ...prevState, section: 2 }})}>Next</ButtonPrimary>
+          </Row>
+        </div>
+      </Container>
+    )
+  } else if (state.section === 2) {
+    return (
+      <Container>
+        <div>
+          <div style={{ marginBottom: "60px", borderBottom: "1px solid " + color.darkPurple, width: "100%" }}>
+            <BackArrow style={{ marginTop: "40px", cursor: "pointer" }} onClick={() => history.push(ROUTES.REPORTS)} />
+            <h2>Verification supply chain partners</h2>
+          </div>
+          <ConfirmationContainer>
+            <Text.H1>Thanks!</Text.H1>
+            <Row>
+              <Text.P>Would you like to add your upstream partners of this supply chain?</Text.P>
+              <Buttons.ButtonPrimary style={{ marginRight: "10px" }} onClick={() => setState({ verified: 1 })}>YES</Buttons.ButtonPrimary>
+              <Buttons.ButtonTertiary onClick={() => setState({ verified: 0 })}>NO</Buttons.ButtonTertiary>
+            </Row>
+          </ConfirmationContainer>
+        </div>
+      </Container>
+    )
+  } else { return null }
 }
 
 export default VerifyForm
@@ -100,4 +130,13 @@ const Row = styled.div`
   align-items: center;
   justify-content: space-between;
   margin: 10px 0;
+`
+const ConfirmationContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 820px;
+  height: 299px;
+  padding: 50px 59px;
+  background: ${color.veryLightPurple};
+
 `

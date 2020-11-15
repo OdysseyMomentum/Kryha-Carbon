@@ -3,10 +3,11 @@ import styled from 'styled-components'
 import { useStore } from '../context'
 import color from '../styles/color'
 import { Text } from '../styles/components'
+import { StarRating } from './shared/star-rating'
 
 export const UserCard = () => {
 
-    const { user } = useStore()
+    const { user, reports} = useStore()
     
     return (
         <Container>
@@ -25,6 +26,7 @@ export const UserCard = () => {
             <Text.H4 color={color.neon} style={{marginLeft: "100px", textTransform: "uppercase", fontWeight: "lighter"}}>
                 {user.accountType}
             </Text.H4>
+            {reports && <StarRating rating={reports[0]} fill={color.neon}/>}
         </Container>
     )
 }

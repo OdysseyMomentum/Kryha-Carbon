@@ -28,9 +28,9 @@ const ReportForm = () => {
       createReport({
         email: user.email,
         report: {
-          emissions: state.emissions,
-          year: state.year,
-          stars: Math.round(Math.random()*3),
+          emissions: parseInt(state.emissions),
+          year: parseInt(state.year),
+          stars: parseInt(Math.round(Math.random()*3)),
         }
       })
     }
