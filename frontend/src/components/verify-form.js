@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import styled from 'styled-components'
+import { toast } from "react-toastify";
 
 import {ReactComponent as BackArrow} from '../assets/icons/back-arrow.svg'
 import { ButtonPrimary } from "../styles/components/button"
@@ -9,11 +10,12 @@ import { useStore } from "../context"
 import color from "../styles/color"
 import { useHistory } from "react-router-dom"
 import ROUTES from "../router/routes"
+import { verify } from "../actions/verify";
 
 const VerifyForm = () => {
 
   const history = useHistory()
-  const { user } = useStore()
+  const { user, toVerifies } = useStore()
     const [state, setState] = useState({
       verified: 1,
       section: 1
@@ -31,7 +33,18 @@ const VerifyForm = () => {
       })
     }
 
-  const handleInput = (event)=>setState(prevState=>({...prevState, [event.target.name]: event.target.value}))
+  const onVerify = async () => {
+    const res = await verify(toVerify.receiver, toVerify.sender, toVerify.product.name);
+
+    if (res) {
+      toast.success("Successfully verified");
+      return setState(prevState =>{ return { ...prevState, section: 2 }});
+    } else {
+      return toast.error("Verification failed");
+    }
+  }
+
+  const toVerify = toVerifies[0];
 
   if (state.section === 1) {
     return (
@@ -43,14 +56,14 @@ const VerifyForm = () => {
           </div>
           <form onSubmit={handleSubmit}>
             <Row style={{ justifyContent: "flex-start" }}>
-              <H3 color={color.darkPurple}>WATTO PHONE 6</H3>
+              <H3 color={color.darkPurple}>{toVerify.product.name}</H3>
             </Row>
             <Row>
-              <H3 width="400px">WATTO</H3>
+              <H3 width="400px">{toVerify.sender}</H3>
               <H3 color={color.darkPurple}>DOWNSTREAM</H3>
             </Row>
             <Row>
-              <H3 width="400px">SAMSUNG ELECTRONICS (YOU)</H3>
+              <H3 width="400px">{toVerify.receiver} (YOU)</H3>
               <H3 color={color.darkPurple}>MIDSTREAM</H3>
             </Row>
           </form>
@@ -73,7 +86,7 @@ const VerifyForm = () => {
           </Row>
           <Text.P style={{ textTransform: "none", fontStyle: "italic" }}>If you agree, your report will be verified with your blockchain data</Text.P>
           <Row style={{ justifyContent: "flex-end" }}>
-            <ButtonPrimary style={{ marginTop: "80px", marginLeft: "525px" }} onClick={()=>setState(prevState =>{ return { ...prevState, section: 2 }})}>Next</ButtonPrimary>
+            <ButtonPrimary style={{ marginTop: "80px", marginLeft: "525px" }} onClick={onVerify}>Next</ButtonPrimary>
           </Row>
         </div>
       </Container>
@@ -90,8 +103,8 @@ const VerifyForm = () => {
             <Text.H1>Thanks!</Text.H1>
             <Row>
               <Text.P>Would you like to add your upstream partners of this supply chain?</Text.P>
-              <Buttons.ButtonPrimary style={{ marginRight: "10px" }} onClick={() => setState({ verified: 1 })}>YES</Buttons.ButtonPrimary>
-              <Buttons.ButtonTertiary onClick={() => setState({ verified: 0 })}>NO</Buttons.ButtonTertiary>
+              <Buttons.ButtonPrimary style={{ marginRight: "10px" }} onClick={() => history.push(ROUTES.REPORTS)}>YES</Buttons.ButtonPrimary>
+              <Buttons.ButtonTertiary onClick={() => history.push(ROUTES.REPORTS)}>NO</Buttons.ButtonTertiary>
             </Row>
           </ConfirmationContainer>
         </div>

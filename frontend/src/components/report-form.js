@@ -1,10 +1,12 @@
 import React, { useState } from "react"
 import styled from 'styled-components'
+import { toast } from "react-toastify";
 
+import { useStoreContext } from "../context";
 import {ReactComponent as BackArrow} from '../assets/icons/back-arrow.svg'
 import { ButtonPrimary } from "../styles/components/button"
 import {Inputs, Text} from "../styles/components"
-import { createReport } from "../actions/report"
+import { createReport, getReports } from "../actions/report"
 import { useStore } from "../context"
 import color from "../styles/color"
 import { useHistory } from "react-router-dom"
@@ -14,7 +16,7 @@ import { StarRating } from "./shared/star-rating"
 const ReportForm = () => {
 
   const history = useHistory()
-  const { user } = useStore()
+  const [{ user }, dispatch] = useStoreContext();
     const [state, setState] = useState({
       year: "",
       emissions: "",
@@ -23,16 +25,24 @@ const ReportForm = () => {
       ratio: 3
     })
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
       event.preventDefault()
-      createReport({
+      const res = await createReport({
         email: user.email,
         report: {
           emissions: parseInt(state.emissions),
           year: parseInt(state.year),
           stars: parseInt(Math.round(Math.random()*3)),
         }
-      })
+      });
+
+      if (res) {
+        await getReports(user.email, dispatch);
+        toast.success("Report successfully created");
+        return history.push(ROUTES.REPORTS);
+      } else {
+        return toast.error("Report creation error, please try again later");
+      }
     }
 
   const handleInput = (event)=>setState(prevState=>({...prevState, [event.target.name]: event.target.value}))
@@ -68,7 +78,7 @@ const ReportForm = () => {
         <Row>
           <H3>RATING</H3>
           <Inputs.Input width="346px" value={state.ratio} name="ratio" onChange={handleInput} />
-          <StarRating rating={2} width="200px"/>
+          <StarRating rating={Number(state.ratio)} width="200px"/>
         </Row>
 
         <ButtonPrimary style={{marginTop: "80px", marginLeft: "525px"}}>DONE</ButtonPrimary>

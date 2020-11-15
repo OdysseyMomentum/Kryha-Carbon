@@ -32,7 +32,7 @@ export const Reports = () => {
         <Container>
             <Row style={{justifyContent: "flex-start"}}>
                 <h2 style={{ cursor: "pointer"}} onClick={()=>history.push(ROUTES.REPORTS)}>Reports</h2>
-                <h2 style={{ color: color.darkPurple, paddingLeft: "56px", cursor: "pointer"}} onClick={()=>history.push(ROUTES.VERIFY)}>Verifications (1)</h2>
+                <h2 style={{ color: color.darkPurple, paddingLeft: "56px", cursor: "pointer"}} onClick={()=>history.push(ROUTES.VERIFY)}>Verifications</h2>
             </Row>
             <Form onClick={() => history.push(ROUTES.REPORT_FORM)}>
                 <p>{new Date().getFullYear() + 1}</p>
