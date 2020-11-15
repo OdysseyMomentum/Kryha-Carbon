@@ -10,8 +10,8 @@ export const StarRating = (props) => {
 	return (
         <Container width={props.width}>
             {[1,2,3].map((star) => (star <= rating
-                ? <OutlinedStar style={{ fill: color.darkPurple }} />
-                : <OutlinedStar />
+                ? <OutlinedStar style={{ fill: color.darkPurple }} key={star} />
+                : <OutlinedStar key={star} />
             ))}
         </Container>
 	);

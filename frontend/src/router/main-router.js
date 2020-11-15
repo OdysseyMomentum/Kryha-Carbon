@@ -7,6 +7,7 @@ import { Reports } from '../components/reports';
 import ReportForm from "../components/report-form"
 import { Verify } from '../components/verify';
 import { Products } from "../components/products";
+import { ProductForm } from "../components/product-form";
 import { ROUTES } from "./routes";
 import VerifyForm from "../components/verify-form";
 
@@ -41,6 +42,11 @@ export const Router = () => {
         <Route exact path={ROUTES.PRODUCTS}>
           <Layout>
             <Products />
+          </Layout>
+        </Route>
+        <Route exact path={ROUTES.PRODUCT_FORM}>
+          <Layout>
+            <ProductForm />
           </Layout>
         </Route>
         <Route path="/">

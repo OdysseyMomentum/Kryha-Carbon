@@ -14,11 +14,18 @@ export const Select = styled.select`
   padding: 0 5px;
   border: none;
   font-family: "Exo 2", sans-serif;
-  color: ${color.darkPurple};
   font-size: ${fontSize[1]};
   /* line-height: 24px; */
   text-transform: uppercase;
   font-weight: 600;
+  border: 1px solid ${color.neon};
+  width: 100%;
+  padding: 18px 31px;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: ${color.neon};
 `;
 export const Option = styled.option`
   padding: 5px;
@@ -50,7 +57,7 @@ export const SelectInput = (props) => {
     ));
   }
   return (
-    <Select onChange={props.handleDropdown} disabled={props.disabled} value={props.selected} style={{ ...props.style, width: props.width }}>
+    <Select name={props.name} onChange={props.handleDropdown} disabled={props.disabled} value={props.selected} style={{ ...props.style, width: props.width }}>
       {options}
     </Select>
   );
@@ -68,6 +75,14 @@ const InputField = styled.input`
   :focus {
     border-color: ${color.neon};
   }
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: ${color.neon};
+  ::placeholder {
+    color: ${color.neon};
+  }
 `;
 const InputFieldTransparent = styled.input`
   width: ${(props) => props.width || "100%"};
@@ -81,6 +96,14 @@ const InputFieldTransparent = styled.input`
   height: 52px;
   :focus {
     border-color: ${color.neon};
+  }
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: ${color.neon};
+  ::placeholder {
+    color: ${color.neon};
   }
 `;
 
@@ -114,6 +137,7 @@ export const Input = (props) => {
         disabled={props.disabled}
         width={props.width}
         placeholder={props.placeholder}
+        style={props.style}
       />
       {props.error && <Message error>{/*<ErrorIcon />*/ props.error}</Message>}
       {props.success && <Message>{/*<SuccessIcon />*/ props.success}</Message>}
@@ -134,6 +158,7 @@ export const Input = (props) => {
         disabled={props.disabled}
         width={props.width}
         placeholder={props.placeholder}
+        style={props.style}
       />
       {props.error && <Message error>{/*<ErrorIcon />*/ props.error}</Message>}
       {props.success && <Message>{/*<SuccessIcon />*/ props.success}</Message>}
