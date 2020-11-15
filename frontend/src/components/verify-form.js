@@ -103,8 +103,8 @@ const VerifyForm = () => {
             <Text.H1>Thanks!</Text.H1>
             <Row>
               <Text.P>Would you like to add your upstream partners of this supply chain?</Text.P>
-              <Buttons.ButtonPrimary style={{ marginRight: "10px" }} onClick={() => setState({ verified: 1 })}>YES</Buttons.ButtonPrimary>
-              <Buttons.ButtonTertiary onClick={() => setState({ verified: 0 })}>NO</Buttons.ButtonTertiary>
+              <Buttons.ButtonPrimary style={{ marginRight: "10px" }} onClick={() => history.push(ROUTES.REPORTS)}>YES</Buttons.ButtonPrimary>
+              <Buttons.ButtonTertiary onClick={() => history.push(ROUTES.REPORTS)}>NO</Buttons.ButtonTertiary>
             </Row>
           </ConfirmationContainer>
         </div>
