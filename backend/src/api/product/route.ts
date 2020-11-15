@@ -29,7 +29,7 @@ router.post(
 
 router.post("/product/notify", validateUser, validateRequest, notifyHandler);
 
-router.get(
+router.post(
   "/product/all",
   validateUser,
   validateRequest,
