@@ -18,7 +18,7 @@ router.post(
   createReportHandler
 );
 
-router.get("/reports/verify", validateUser, validateRequest, verifyHandler);
-router.get("/reports/all", validateUser, validateRequest, retrieveAllHandler);
+router.post("/reports/verify", validateUser, validateRequest, verifyHandler);
+router.post("/reports/all", validateUser, validateRequest, retrieveAllHandler);
 
 export { router as reportRouter };

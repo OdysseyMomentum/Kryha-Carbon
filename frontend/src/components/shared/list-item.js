@@ -7,6 +7,13 @@ import { color } from '../../assets/color';
 export const ListItem = (props) => {
 	const { leftText, rating, rightText } = props;
 
+	if (props.content) {
+		return (
+			<ListItemContainer>
+				{props.content}
+			</ListItemContainer>
+		)
+	}
 	return (
 		<ListItemContainer>
 			<div style={{ width: '50%' }}>
@@ -22,7 +29,7 @@ export const ListItem = (props) => {
 
 export const ListItemContainer = styled.div`
 	width: 100%;
-	margin: 18px auto;
+	margin: 0 auto 18px;
 	padding: 40px;
 	display: flex;
 	background-color: ${color.lightPurple};

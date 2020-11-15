@@ -6,41 +6,27 @@ import fontSize from "../typography";
 const Button = styled.button`
   display: flex;
   align-items: center;
+  font-family: 'Inter', sans-serif;
   justify-content: center;
-  font-family: "Exo 2", sans-serif;
   font-size: ${fontSize[1]};
-  border-radius: 4px;
-  padding: 8px 24px;
-  border: none;
+  border-radius: 3px;
+  padding: 17px 32px;
+  background-color: transparent;
+  color: ${color.darkPurple};
+  border: 1px solid;
   cursor: pointer;
-
 `;
 export const ButtonPrimary = styled(Button)`
-  color: ${color.white};
-  background-color: ${color.lightBlue};
-  :active {
-    background-color: ${color.blueGreen};
-  }
-  :disabled {
-    background-color: ${color.grey};
-  }
+  
 `;
 
 export const ButtonTertiary = styled(Button)`
-  background-color: transparent;
-  color: ${color.lightBlue};
-  border: none;
+  background-color: ${color.darkPurple};
+  color: ${color.lightPurple};
+  border: 1px solid ${color.darkPurple};
   :hover {
     box-shadow: none;
-    border-color: ${color.blueGreen};
-  }
-  :active {
-    box-shadow: none;
-    border-color: ${color.blueGreen};
-  }
-  :focus {
-    box-shadow: none;
-    border-color: ${color.blueGreen};
+    border-color: ${color.neon};
   }
   :disabled {
     border-color: ${color.grey};

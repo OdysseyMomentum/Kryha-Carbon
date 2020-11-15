@@ -1,4 +1,8 @@
-import { insertProduct, updateProductByName } from "../db/handlers/product";
+import {
+  findManyProducts,
+  insertProduct,
+  updateProductByName
+} from "../db/handlers/product";
 import { findOneReportByEmail } from "../db/handlers/report";
 import { findOneByEmail } from "../db/handlers/user";
 import { emitMessage } from "../services/websocket";
@@ -13,7 +17,9 @@ export const registerProduct = async (email: string, productrequest: any) => {
       verified: false,
       existence: false,
       stars: 0
-    }
+    },
+    stars: 0,
+    verified: false
   };
   const res = await insertProduct(product);
   if (!res) {
@@ -39,11 +45,18 @@ export const updateProduct = async (
 
   if (approver.accountType == "midstream") {
     product = await updateProductByName(productName, {
-      midstream: { verified: true, existence: true, stars: report.stars }
+      midstream: { verified: true, existence: true, stars: report.stars }, stars: report.stars
     });
   } else {
     product = await updateProductByName(productName, {
       upstream: { verified: true, existence: true, stars: report.stars }
+    });
+    const productRate =
+      (product.midstream!.stars + product.upstream!.stars) / 2;
+    const productStars = Math.floor(productRate);
+    product = updateProductByName(productName, {
+      stars: productStars,
+      verified: true
     });
   }
 
@@ -60,4 +73,9 @@ export const notifyUpstream = async (productName: string, email: string) => {
     content: { sender: product.email, receiver: email, product }
   });
   return product;
+};
+
+export const fetchAllProducts = async (email: string) => {
+  const products = await findManyProducts({ email }, 50);
+  return products;
 };

@@ -3,27 +3,30 @@ import styled from 'styled-components'
 import { useStore } from '../context'
 import color from '../styles/color'
 import { Text } from '../styles/components'
+import { StarRating } from './shared/star-rating'
 
 export const UserCard = () => {
-    // FIXME
-    // const { user } = useStore()
-    const user = "SUN GIMLI"
-    const role = "DOWNSTREAM"
+
+    const { user, reports} = useStore()
+    
     return (
         <Container>
             <Row>
                 <Circle>
-                    <Text.H3 style={{textTransform: "capitalize"}}>
-                        {user[0] + user[1]}
+                    <Text.H3 style={{textTransform: "uppercase"}}>
+                        {user.email[0] + user.email[1]}
                     </Text.H3>
                 </Circle>
-                <Text.H4 color={color.neon}>
-                    {user}
+                <Column>
+                <Text.H4 color={color.neon} style={{textTransform: "uppercase"}}>
+                    {user.email.split("@")[0]}
                 </Text.H4>
+                </Column>
             </Row>
-            <Text.H4 color={color.neon} style={{marginLeft: "115px"}}>
-                {role}
+            <Text.H4 color={color.neon} style={{marginLeft: "100px", textTransform: "uppercase", fontWeight: "lighter"}}>
+                {user.accountType}
             </Text.H4>
+            {reports && <StarRating rating={reports[0]} fill={color.neon}/>}
         </Container>
     )
 }
@@ -51,6 +54,7 @@ const Row = styled.div`
     width: 160px;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: -40px;
 `
 const Column = styled.div`
     display: flex;

@@ -14,6 +14,7 @@ export const createReport = async (report: ReportType) => {
   // hash the report
   const reportHash = hashData(JSON.stringify(report).toString());
   report.hash = reportHash;
+  console.log(report.hash);
 
   // find user
   const user: User = await findUser(report.email);

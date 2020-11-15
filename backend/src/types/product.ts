@@ -6,5 +6,6 @@ export interface Product {
   category: string;
   midstream?: Partner;
   upstream?: Partner;
-  totalStars?: number;
+  stars: number;
+  verified: boolean;
 }
