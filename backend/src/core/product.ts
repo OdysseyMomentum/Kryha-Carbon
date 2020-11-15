@@ -45,7 +45,7 @@ export const updateProduct = async (
 
   if (approver.accountType == "midstream") {
     product = await updateProductByName(productName, {
-      midstream: { verified: true, existence: true, stars: report.stars }
+      midstream: { verified: true, existence: true, stars: report.stars }, stars: report.stars
     });
   } else {
     product = await updateProductByName(productName, {

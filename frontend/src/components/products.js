@@ -1,18 +1,44 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useHistory, Redirect } from "react-router-dom";
-import { useStore } from '../context';
+import { useStoreContext } from "../context";
+import { getProducts } from "../actions/product";
 
 import { ListItem } from "./shared/list-item";
 import { color } from '../assets/color';
 import { ReactComponent as DownArrow } from '../assets/icons/down-arrow.svg';
 import ROUTES from '../router/routes';
 
+const mockProducts = [
+    {
+        midstream: {verified: false, existence: false, stars: 1},
+        name: "Product 1",
+        stars: 1,
+    },
+    {
+        midstream: {verified: false, existence: false, stars: 2},
+        name: "Product 2",
+        stars: 3,
+    },
+    {
+        midstream: {verified: false, existence: false, stars: 3},
+        name: "Product 3",
+        stars: 2,
+    }
+]
+
 export const Products = () => {
     const history = useHistory();
-    const { user, products = [] } = useStore();
+	const [{ user, products = [] }, dispatch] = useStoreContext();
 
-	if (user.accountType === "upstream") return <Redirect to={ROUTES.REPORTS} />;
+    if (user.accountType === "upstream") return <Redirect to={ROUTES.REPORTS} />;
+    
+    useEffect(() => {
+        const fetchProducts = async () => {
+            await getProducts(user.email, dispatch);
+        };
+        fetchProducts();
+    }, []);
 
 	return (
         <Container>
@@ -25,12 +51,12 @@ export const Products = () => {
                 </Button>
             </FlexContainer>
             <Scrollable>
-            {[...products,1,2,3,4,5].map((product, index) => (
+            {[...products, ...mockProducts].map((product, index) => (
                 <ListItem
-                    leftText={`Product ${product}`}
-                    rating={index + 1}
+                    leftText={product.name}
+                    rating={product.stars}
                     rightText="verified"
-                    key={product}
+                    key={product.name}
                 />
             ))}
             </Scrollable>
