@@ -56,7 +56,9 @@ const VerifyForm = () => {
           <H3 width="400px">SAMSUNG ELECTRONICS (YOU)</H3>
           <H3 color={color.darkPurple}>MIDSTREAM</H3>
         </Row>
-        
+        <Row >
+          <Text.H3>Do you verify you are part of this product?</Text.H3>
+        </Row>
 
         <ButtonPrimary style={{marginTop: "80px", marginLeft: "525px"}}>DONE</ButtonPrimary>
       </form>
@@ -86,6 +88,7 @@ const H3 = styled(Text.H3)`
 `
 const Row = styled.div`
   display: flex;
+  margin: ${props => props.margin};
   align-items: center;
   justify-content: space-between;
   margin: 10px 0;
