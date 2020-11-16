@@ -19,3 +19,8 @@ On the first layer, we have reporting. This enables organizations to easily time
 On the second layer, there’s validation. This layer allows trusted entities like credible NGO’s to audit and validate the content of the reports. 
 
 Lastly, the rating layer. This will enable domain experts such as CDP.net to benchmark organizations within their horizontal supply chain layers. And weight them against their vertical supply chain partners. Stringing together the supply chain to create a product-specific rating in a product passport. 
+
+# Run a demo of Charles
+- clone the repository
+- ```./startDemo.sh```
+- ```cd backend && ./registerUsers.sh```
