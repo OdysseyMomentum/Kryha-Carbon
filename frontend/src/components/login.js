@@ -35,7 +35,7 @@ export const Login = () => {
         <>
             <Header>
                 <img
-                    src="https://s3-alpha-sig.figma.com/img/ce11/7bc6/1f170f971747fb6b0964bbe71afcd00c?Expires=1606089600&Signature=SUbrnKPzKqGPR2nKDFGchM6hpeitZFkec1eQzadkDhrJOndlehiHTZ1OWRcddqJDzWtJnUgXcgU0kaC~1BmtgqeTLRAgOrLsacGHCxOEYfdSdP36BCyiAXhbXao~c2lwqRbVaUrlfFPlffPjgz5S2UMScyEwMfUWb0EamoVF4Cjt2HHIaWqvwkPDjGIyPe6183CyEVWlUE7dLr430NHzDb12te6fEH7Wu7lvWSIb3A0y2DtXp8KsqKlZ4qjBoli0nMOYXqpdF~AtpUSdvzHOUp46oGXkFVVJWXxOwsBBN56deh7QhqnBUu8Ix9obcWidqtCDDNMEmzGtn50sMsji~g__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+                    src="https://s3-alpha-sig.figma.com/img/ce11/7bc6/1f170f971747fb6b0964bbe71afcd00c?Expires=1607299200&Signature=Bex7CCeOe9S6yDowXPRjIaRlLJdkwClvVQ1X68ghHx9abv9Cq2X6H8DWwgk-Q4BLDdlXI2KI~QkztV~ZMmkYjmRvOHV8IJa-0i8aWd5zQVsR3hDwRPrwg~13~ovJqvax68d8owXGCdG2CkFEvNbsqnohKN~IQQ7uGFIsVkeTZZ0e0xa3Ag0il24f7bc1BLm505vFn4ptoQdRgIuaOkAly2soD7sDsmWM0Az9HhFa98QVgWIh85MwrtNe~88zkz7rFXcGYk4vtNgzwIiDrzeLYcSVtzlJCMIu4EG8SjF82XlOvzb7XqhFN2qdvqLT7wiXdQuqfwcKPSLmxcGdDj4fuw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
                 />
                 <h1>Charles</h1>
                 <h2>Only the fittest supply</h2>
