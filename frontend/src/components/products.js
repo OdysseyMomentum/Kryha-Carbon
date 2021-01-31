@@ -30,8 +30,7 @@ const mockProducts = [
 export const Products = () => {
     const history = useHistory();
 	const [{ user, products = [] }, dispatch] = useStoreContext();
-
-    if (user.accountType === "upstream") return <Redirect to={ROUTES.REPORTS} />;
+    // if (user.accountType === "upstream") return <Redirect to={ROUTES.REPORTS} />;
     
     useEffect(() => {
         const fetchProducts = async () => {
